@@ -3,17 +3,25 @@ chatText = "chatTranscript.lines";
 
 var updateCallback = function(data){
     var value = data.newValue;
+    console.log("value : "+value);
     var line = value[value.length -1];
+    console.log("line : "+line);
     var movieName = line.text;
+    console.log("moviename : "+movieName);
     if (line.source.toLowerCase()==="visitor"){
-        var url = "https://www.omdbai.com?t="+movieName+"&apikey=";
+        var url = "https://www.omdbai.com?t="+movieName+"&apikey=3e626416";
         fetch(url)
                 .then(function(response){
+                    console.log("response : "+response.json());
                     return response.json();
                 }
                 ).then(function(res){
                     document.getElementById("Title").innerHTML = res.Title;
                     document.getElementById("Year").innerHTML = res.Year;
+                    document.getElementById("Rated").innerHTML = res.Rated;
+                    document.getElementById("Actors").innerHTML = res.Actors;
+                    document.getElementById("Genre").innerHTML = res.Genre;
+                    document.getElementById("Plot").innerHTML = res.Plot;
 
                 }).catch(function(error){
                     console.log("Error Message : "+error);
@@ -30,4 +38,4 @@ var notifyWhenDone = function(error) {
 };
 
 lpTag.agentSDK.init({});
-lpTag.agentSDK.bind(pathToData, updateCallback, notifyWhenDone);
+lpTag.agentSDK.bind(chatText, updateCallback, notifyWhenDone);
