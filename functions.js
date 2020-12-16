@@ -28,6 +28,7 @@ var updateCallback = function(data){
                     document.getElementById("Plot").innerHTML = res.Plot;
 
                 }).catch(function(error){
+                    console.log("I am inside catch");
                     console.log("Error Message : "+error);
                 })
     }
