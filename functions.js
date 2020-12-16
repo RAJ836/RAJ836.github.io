@@ -1,12 +1,16 @@
+console.log("inside fucntions.js");
 errorMessage = document.getElementById("errorMessage");
 chatText = "chatTranscript.lines";
+console.log(chatText);
 
 var updateCallback = function(data){
     var value = data.newValue;
+    console.log("after value ");
     console.log("value : "+value);
     var line = value[value.length -1];
     console.log("line : "+line);
     var movieName = line.text;
+    console.log("after movieName");
     console.log("moviename : "+movieName);
     if (line.source.toLowerCase()==="visitor"){
         var url = "https://www.omdbai.com?t="+movieName+"&apikey=3e626416";
