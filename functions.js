@@ -16,7 +16,7 @@ var updateCallback = function(data){
         var url = "https://www.omdbapi.com?t="+movieName+"&apikey=3e626416";
         fetch(url)
                 .then(function(response){
-                    console.log("response : "+response.json());
+                    
                     return response.json();
                 }
                 ).then(function(res){
